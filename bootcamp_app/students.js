@@ -9,13 +9,7 @@ const pool = new Pool({
   database: 'bootcampx'
 });
 
-pool.query(`
-  SELECT count(assistance_requests.*) as total_assistances, teachers.name
-  FROM assistance_requests
-  JOIN teachers ON teachers.id = teacher_id
-  WHERE name = ${args[2]}
-  GROUP BY teachers.name;
-`)
+pool.query(`SELECT ${args.id}, name, cohort_id FROM students LIMIT 5;`)
 .then(output => {
   console.log(output)
 })
